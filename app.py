@@ -18,6 +18,7 @@ class Game:
         pygame.display.set_icon(self.img)
 
         self.level = Level()
+        self.level.save_level("level.json")
         self.x = 100
         self.y = 100
 
