@@ -8,7 +8,7 @@ class Vector2D:
         self.y = y
 
     def __str__(self) -> str:
-        return f"(x={self.x}, y={self.y})"
+        return f"[x={self.x}, y={self.y}]"
 
     def __repr__(self) -> str:
         return f"Vector2D({self.x=}, {self.y=})"
@@ -66,6 +66,8 @@ class Vector2D:
     def rotate_ccw(self, degrees: float) -> Vector2D:
         return self.rotate_cw(-degrees)
 
+    def to_tuple(self) -> tuple[float, float]:
+        return self.x, self.y
 
 def main():
     v  = Vector2D(0, 1)
