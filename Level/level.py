@@ -32,11 +32,13 @@ class Level:
                 match column:
 
                     case "x":
-                        Tile(Vector2D(id_c * TILESIZE, id_r * TILESIZE), "border", [self.visible_sprites, self.obstacle_sprites])
+                        Tile(Vector2D(id_c * TILESIZE, id_r * TILESIZE), "water-deep", [self.visible_sprites, self.obstacle_sprites])
                     case "w":
                         Tile(Vector2D(id_c * TILESIZE, id_r * TILESIZE), "water", [self.visible_sprites, self.obstacle_sprites])
                     case ".":
                         Tile(Vector2D(id_c * TILESIZE, id_r * TILESIZE), "grass", [self.visible_sprites])
+                    case "b":
+                        Tile(Vector2D(id_c * TILESIZE, id_r * TILESIZE), "bridge", [self.visible_sprites])
                     
 
         x, y = LEVEL[1]

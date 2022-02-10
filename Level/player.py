@@ -49,18 +49,18 @@ class Player(pygame.sprite.Sprite):
 
         for sprite in self.obstacles:
             if direction == 0:
-                if sprite.rect.colliderect(self.hitbox):
+                if sprite.hitbox.colliderect(self.hitbox):
                     if self.direction.x > 0:
-                        self.hitbox.right = sprite.rect.left
+                        self.hitbox.right = sprite.hitbox.left
                     else:
-                        self.hitbox.left = sprite.rect.right
+                        self.hitbox.left = sprite.hitbox.right
 
             else:
-                if sprite.rect.colliderect(self.hitbox):
+                if sprite.hitbox.colliderect(self.hitbox):
                     if self.direction.y > 0:
-                        self.hitbox.bottom = sprite.rect.top
+                        self.hitbox.bottom = sprite.hitbox.top
                     else:
-                        self.hitbox.top =  sprite.rect.bottom
+                        self.hitbox.top =  sprite.hitbox.bottom
 
 
 

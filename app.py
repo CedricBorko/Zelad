@@ -35,7 +35,7 @@ class Game:
                         Debug.INFO_VISIBLE = not Debug.INFO_VISIBLE
 
 
-            self.screen.fill('black')
+            self.screen.fill('#3f48cc')
             self.level.run()
             pygame.display.update()
             self.clock.tick(FPS)

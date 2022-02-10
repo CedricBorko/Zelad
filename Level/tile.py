@@ -9,3 +9,5 @@ class Tile(pygame.sprite.Sprite):
 
         self.image = pygame.image.load(f"Resources/Graphics/{sprite}.png").convert_alpha()
         self.rect = self.image.get_rect(topleft=position.to_tuple())
+
+        self.hitbox = self.rect.inflate(0, -12)
