@@ -9,27 +9,28 @@ class Button(pygame.sprite.Sprite):
         self,
         x       : int,
         y       : int,
-        offset_x: int,
-        offset_y:int,
         width   : int,
         height  : int,
         callback: Callable,
         font    : pygame.font.Font = BUTTON_FONT,
         text    : str = "",
-        fg_color: tuple[int, int, int] = (0, 0, 0),
-        fg_hover: tuple[int, int, int] = (100, 100, 100),
-        bg_color: tuple[int, int, int] = (255, 255, 255), 
-        bg_hover: tuple[int, int, int] = (180, 180, 180),
+        offset_l: int = 0,
+        offset_t: int = 0,
+        offset_r: int = 0,
+        offset_b: int = 0,
         cursor  : pygame.Surface = None
 ) -> None:
         super().__init__()
 
         self.x        = x
         self.y        = y
-        self.offset_x = offset_x
-        self.offset_y = offset_y
         self.width    = width
         self.height   = height
+
+        self.offset_l = offset_l
+        self.offset_t = offset_t
+        self.offset_r = offset_r
+        self.offset_b = offset_b
 
         self.callback = callback        
 
@@ -39,14 +40,15 @@ class Button(pygame.sprite.Sprite):
         self.image_normal = pygame.image.load("exit.png")
         self.image_hover  = pygame.image.load("exit_hover.png")
         self.image        = self.image_normal
+        self.rect         = self.image.get_rect(topleft=(self.x, self.y))
 
-        self.rect = pygame.Rect(x, y, width, height)
+        # self.rect = pygame.Rect(x, y, width, height)
         self.button_down = False
     
     def adjust(self, s_width: int, s_height: int):
-        self.x = s_width - self.width - self.offset_x
-        self.y = self.offset_y
-        self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
+        self.x    = s_width - self.width - self.offset_r
+        self.y    = self.offset_t
+        self.rect = self.image.get_rect(topleft=(self.x, self.y))
 
     def handle_event(self, event) -> None:
 

@@ -48,8 +48,12 @@ class Level:
     def run(self):
         self.visible_sprites.custom_draw(self.player)
         self.visible_sprites.update()
-        Debug.show_info(self.player.direction)
+        Debug.show_info("Speed", self.player.speed)
+        Debug.show_info("Dir", self.player.status, 40)
 
+    def update_surface(self):
+        self.display_surface = pygame.display.get_surface()
+        self.visible_sprites.display_surface = pygame.display.get_surface()
     
 class YSortCameraGroup(pygame.sprite.Group):
     def __init__(self):
@@ -67,4 +71,8 @@ class YSortCameraGroup(pygame.sprite.Group):
 
         for sprite in self.sprites():
             offset_rect = sprite.rect.topleft - self.offset
-            self.display_surface.blit(sprite.image, offset_rect)
+            if sprite == player:
+                player.draw(self.display_surface, offset_rect)
+            else:
+                self.display_surface.blit(sprite.image, offset_rect)
+
