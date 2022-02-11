@@ -11,7 +11,9 @@ import os
 from settings import *
 from Level.level import Level
 
-
+cursor = pygame.image.load("Resources/Graphics/sword.png")
+pygame.mouse.set_visible(False)
+cursor_img_rect = cursor.get_rect()
 
 class Game:
     def __init__(self) -> None:
@@ -63,6 +65,8 @@ class Game:
         self.screen.fill('#3f48cc')
         self.level.run()
         self.buttons.draw(self.screen)
+        cursor_img_rect.center = pygame.mouse.get_pos()
+        self.screen.blit(cursor, cursor_img_rect)
 
     def handle_keys(self, event):
         if event.key == pygame.K_F1:
