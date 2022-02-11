@@ -24,6 +24,7 @@ class Player(pygame.sprite.Sprite):
         keys = pygame.key.get_pressed()
 
         self.direction = Vector2D(0, 0)
+        self.speed = 5
 
         if keys[pygame.K_a]:
             self.direction.x = -1
@@ -34,6 +35,8 @@ class Player(pygame.sprite.Sprite):
             self.direction.y = -1
         elif keys[pygame.K_s]:
             self.direction.y = 1   
+
+        if keys[pygame.K_LSHIFT]: self.speed = 10
     
     def move(self, speed: float) -> None:
         if self.direction.magnitude != 0:
